@@ -1,0 +1,62 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --face-width: 150px;
+    --clip-offset: 50px;
+    --face-gap: 7px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 46px;
+    background-color: #020202;
+    color: #fff;
+    line-height: 1.7;
+}
+
+.diamond-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.diamonds {
+    display: flex;
+    flex-wrap: wrap;
+    padding-inline-start: calc(0.5 * var(--face-width));
+    padding-block-start: calc(0.5 * var(--face-width) + var(--face-gap));
+    gap: var(--face-gap);
+
+}
+
+
+img {
+    width: var(--face-width);
+    height: var(--face-width);
+    --clip-offset: 50%;
+    clip-path: polygon(var(--clip-offset) 0%, calc(100% - var(--clip-offset)) 0%, 100% var(--clip-offset), 100% calc(100% - var(--clip-offset)), calc(100% - var(--clip-offset)) 100%, var(--clip-offset) 100%, 0% calc(100% - var(--clip-offset)), 0% var(--clip-offset));
+    transition: all 0.2s 0.1s;
+    Margin-inline-start: calc(-0.5 * var(--face-width));
+    line-height: 1;
+}
+
+img:nth-child(even) {
+    margin-block-start: calc(-0.5 * var(--face-width) - 0.5 * var(--face-gap));
+}
+
+.diamonds:has(img:hover) img:not(:hover) {
+    scale:0.9 ;
+}
+img:hover {
+    scale:2 ;
+    z-index: 2;
+}
